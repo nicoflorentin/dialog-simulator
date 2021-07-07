@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+    /*border: 1px solid black;*/
+}
+
+/*GRID*/
+
+.grid {
+    display: grid;
+    height: 100vh;
+    width: 80vw;
+    margin: auto;
+
+    grid-template-areas:
+        "head head"
+        "estadistica scene"
+        "interfaz interfaz";
+    grid-template-columns: 10% 90%;
+    grid-template-rows: 10% 50% 40%;
+}
+
+/*HEADBAR*/
+.headBar__cuadro {
+    grid-area: head;
+    
+}
+
+.headBar__flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: -2%; 
+    margin-left: 10px;
+}
+
+.headBar__input {
+
+font-size: 70%;
+
+}
+
+/*ESTADISTICAS*/
+
+.estadisticas {
+    grid-area: estadistica;
+}
+
+/*ESCENA*/
+
+.scene {
+    grid-area: scene;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    background-image: url(pau/upsetGB.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+.scene__respuesta {
+    padding: 30px;
+    width: 90%;
+}
+
+.respuestaBoton {
+}
+
+.respuestaInstancia {
+
+}
+
+/*INTERFAZ*/
+
+.interfaz__cuadro {
+    grid-area: interfaz;
+}
+
+.interfaz {
+    display: flex;
+    height: 100%;
+}
+
+/*botonera*/
+.botonera {
+    display: flex;
+    flex-direction: column;
+}
+
+.boton:hover {
+    font-size: 30px;
+}
+
+.botonCuadro {
+    height: 25%;
+}
+
+/*dialogos*/
+.cuadroDialogos {
+    width: 100%;
+}
+
+.dialogo {
+    height: 25%;
+    padding-left: 3%;
+    font-size: 70%;
+}

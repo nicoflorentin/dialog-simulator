@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>interfaz</title>
+
+
+    <!-- NES -->
+    <!-- minify -->
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <!-- latest -->
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <!-- core style only -->
+    <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet" />
+
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="grid nes-container">
+        <!-- head con datos del personaje-->
+        <div class="headBar__cuadro nes-container with-title">
+            <p class="title">Name</p>
+                <!-- div para el nombre del jugador -->
+                <div class= "headBar__flex nes-field" id="nameDiv">
+                    <input type="text" id="nameForm" name="nameForm" class="nes-input headBar__input" placeholder="Input name to begin">
+                    <input class="nes-btn is-primary" type="button" onclick="clickName()" value="Enter">
+                </div>
+        </div>
+        <!--estadisticas  -->
+        <div class="estadisticas">
+            <div>State</div>
+            <div id="statisticsShow"></div>
+        </div>
+        <!--escenario -->
+        <div class="scene">
+            <!-- respuestas -->
+            <div class="scene__respuesta">
+                <div class="respuestaBoton">
+                    <div id="answerShow">asd</div>
+                </div>
+                <div class="respuestaInstancia">
+                    <div id="questionShow">asd</div>
+                </div>
+            </div>
+        </div>
+        <!-- interfaz -->
+
+        <div class="interfaz__cuadro nes-container with-title">
+            <p class="title">Interface</p>
+            <div class="interfaz">
+            <!-- botonera -->
+                <div class="botonera">
+                    <!-- b1,b2,b3,b4 -->
+                    <div class="botonCuadro"><button class="boton nes-btn is-primary" onclick="buttonPress('a')"></button></div>
+                    <div class="botonCuadro"><button class="boton nes-btn is-primary" onclick="buttonPress('b')"></button></div>
+                    <div class="botonCuadro"><button class="boton nes-btn is-primary" onclick="buttonPress('c')"></button></div>
+                    <div class="botonCuadro"><button class="boton nes-btn is-primary" onclick="buttonPress('d')"></button></div>
+                </div>
+                <!-- dialogos -->
+                <div class="cuadroDialogos">
+                    <!-- d1,d2,d3,d4 -->
+                    <div class="dialogo" id="dialog1Show">Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
+                    <div class="dialogo" id="dialog2Show">Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
+                    <div class="dialogo" id="dialog3Show">Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
+                    <div class="dialogo" id="dialog4Show">Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="web.js"></script>    
+<script src="script.js"></script>
+
+</html>

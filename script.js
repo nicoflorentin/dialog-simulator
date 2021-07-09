@@ -17,7 +17,8 @@ function clickName() {
     let headContainer = document.getElementById("headBar");
     let paragraph = document.createElement("P");
     let text = document.createTextNode(name);
-    headContainer.appendChild(text);
+    paragraph.appendChild(text);
+    headContainer.appendChild(paragraph);
 
     // GUARDAR NOMBRE EN VARIABLE GLOBAL
     playerName = name;

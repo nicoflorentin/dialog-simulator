@@ -10,17 +10,18 @@ function clickName() {
     let name = document.getElementById("nameForm").value;
 
     // ELIMINAR FORMULARIO
-    var item = document.getElementById("nameDiv");
+    let item = document.getElementById("nameDiv");
     item.parentNode.removeChild(item);
     
     // AGREGAR NAME AL DOM
-    let headContainer = document.getElementById("newName");
-    headContainer.innerHTML = name;
+    let headContainer = document.getElementById("headBar");
+    let paragraph = document.createElement("P");
+    let text = document.createTextNode(name);
+    headContainer.appendChild(text);
 
-
-    console.log('nombre ingresado: ' + name);
+    // GUARDAR NOMBRE EN VARIABLE GLOBAL
     playerName = name;
-    console.log('nombre guardado: ' + playerName);
+
 }; 
 
 // FUNCION QUE DETERMINA QUE HACE CADA BOTON

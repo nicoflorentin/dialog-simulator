@@ -8,23 +8,31 @@ var playerName = "";
 function clickName() {
     console.log('Button OK');
     let name = document.getElementById("nameForm").value;
-    document.getElementById("nameDiv").innerHTML = name;
+
+    // ELIMINAR FORMULARIO
+    var item = document.getElementById("nameDiv");
+    item.parentNode.removeChild(item);
+    
+    // AGREGAR NAME AL DOM
+    let headContainer = document.getElementById("newName");
+    headContainer.innerHTML = name;
+
+
     console.log('nombre ingresado: ' + name);
     playerName = name;
     console.log('nombre guardado: ' + playerName);
-};  
-
+}; 
 
 // FUNCION QUE DETERMINA QUE HACE CADA BOTON
 function buttonPress(buttonSelect) {
 
-    if (playerName != "" && instance <= 10) {
+    if (instance <= 10) {
 
         let dialog1Show = document.getElementById("dialog1Show");
         let dialog2Show = document.getElementById("dialog2Show");
         let dialog3Show = document.getElementById("dialog3Show");
         let dialog4Show = document.getElementById("dialog4Show");
-        let anwerShow = document.getElementById("answerShow");
+        let answerShow = document.getElementById("answerShow");
         let questionShow = document.getElementById("questionShow");
         let statisticsShow = document.getElementById("statisticsShow");
 
@@ -37,7 +45,7 @@ function buttonPress(buttonSelect) {
                 dialog3Show.innerHTML = web[instance - 1].botonC.dialog;
                 dialog4Show.innerHTML = web[instance - 1].botonD.dialog;
                 // imprimo en el html la respuesta al dialogo
-                anwerShow.innerHTML = web[instance - 1].botonA.answer;
+                answerShow.innerHTML = web[instance - 1].botonA.answer;
                 questionShow.innerHTML = web[instance - 1].question;
                 // llamo a la funcion del objeto con su sumador propio y modifico el status
                 web[instance - 1].botonA.dialogStateChange();
@@ -50,7 +58,7 @@ function buttonPress(buttonSelect) {
                 dialog2Show.innerHTML = web[instance - 1].botonB.dialog;
                 dialog3Show.innerHTML = web[instance - 1].botonC.dialog;
                 dialog4Show.innerHTML = web[instance - 1].botonD.dialog;
-                anwerShow.innerHTML = web[instance - 1].botonB.answer;
+                answerShow.innerHTML = web[instance - 1].botonB.answer;
                 questionShow.innerHTML = web[instance - 1].question;
                 web[instance - 1].botonA.dialogStateChange();
                 statisticsShow.innerHTML = state;
@@ -62,7 +70,7 @@ function buttonPress(buttonSelect) {
                 dialog2Show.innerHTML = web[instance - 1].botonB.dialog;
                 dialog3Show.innerHTML = web[instance - 1].botonC.dialog;
                 dialog4Show.innerHTML = web[instance - 1].botonD.dialog;
-                anwerShow.innerHTML = web[instance - 1].botonC.answer;
+                answerShow.innerHTML = web[instance - 1].botonC.answer;
                 questionShow.innerHTML = web[instance - 1].question;
                 web[instance - 1].botonA.dialogStateChange();
                 statisticsShow.innerHTML = state;
@@ -74,7 +82,7 @@ function buttonPress(buttonSelect) {
                 dialog2Show.innerHTML = web[instance - 1].botonB.dialog;
                 dialog3Show.innerHTML = web[instance - 1].botonC.dialog;
                 dialog4Show.innerHTML = web[instance - 1].botonD.dialog;
-                anwerShow.innerHTML = web[instance - 1].botonD.answer;
+                answerShow.innerHTML = web[instance - 1].botonD.answer;
                 questionShow.innerHTML = web[instance - 1].question;
                 web[instance - 1].botonA.dialogStateChange();
                 statisticsShow.innerHTML = state;

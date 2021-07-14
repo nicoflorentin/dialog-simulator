@@ -24,6 +24,7 @@ body {
     height: 100vh;
     width: 80vw;
     margin: auto;
+    background-color: #fff;
 
     grid-template-areas:
         "head head"
@@ -92,6 +93,7 @@ font-size: 70%;
 
 .interfaz__cuadro {
     grid-area: interfaz;
+
 }
 
 .interfaz {
@@ -104,10 +106,6 @@ font-size: 70%;
     display: flex;
     flex-direction: column;
     justify-content:space-around; 
-}
-
-.boton:hover {
-    font-size: 30px;
 }
 
 .botonCuadro {

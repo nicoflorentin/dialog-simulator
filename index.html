@@ -33,13 +33,14 @@
                 <!-- div para el input del jugador -->
                 <div class= "headBar__flex nes-field" id="nameDiv">
                     <input type="text" id="nameForm" name="nameForm" class="nes-input headBar__input" placeholder="Input name to begin">
-                    <input class="nes-btn is-primary" type="button" onclick="clickName()" value="Enter">
+                    <input class="nes-btn is-primary" type="button" onclick="storeName()" value="Enter">
                 </div>
         </div>
         <!--estadisticas  -->
         <div class="estadisticas">
             <div>State</div>
             <div id="statisticsShow"></div>
+            <input class="boton nes-btn is-primary" type="button" value="newgame" onclick="newGame()"></input>
         </div>
         <!--escenario -->
         <div class="scene">
@@ -65,6 +66,7 @@
                     <div class="botonCuadro"><button class="boton nes-btn is-primary" onclick="buttonPress('b')"></button></div>
                     <div class="botonCuadro"><button class="boton nes-btn is-primary" onclick="buttonPress('c')"></button></div>
                     <div class="botonCuadro"><button class="boton nes-btn is-primary" onclick="buttonPress('d')"></button></div>
+
                 </div>
                 <!-- dialogos -->
                 <div class="cuadroDialogos">

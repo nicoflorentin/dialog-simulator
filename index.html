@@ -24,33 +24,35 @@
 
 </head>
 
-<body>
+<body id="body">
+    <!-- boton new game -->
+    <button class="botonNewGame nes-btn is-primary" type="button" onclick="newGame()">newgame</button>
+
     <div class="grid nes-container">
         <!-- head con datos del personaje-->
         <div class="headBar__cuadro nes-container with-title" id="headBar">
             <p class="title">Name</p>
 
-                <!-- div para el input del jugador -->
-                <div class= "headBar__flex nes-field" id="nameDiv">
-                    <input type="text" id="nameForm" name="nameForm" class="nes-input headBar__input" placeholder="Input name to begin">
-                    <input class="nes-btn is-primary" type="button" onclick="storeName()" value="Enter">
-                </div>
+            <!-- div para el input del jugador -->
+            <div class= "headBar__flex nes-field" id="nameDiv">
+                <input type="text" id="nameForm" name="nameForm" class="nes-input headBar__input" placeholder="Input name to begin">
+                <input class="nes-btn is-primary" type="button" onclick="submitName()" value="Enter">
+            </div>
         </div>
         <!--estadisticas  -->
         <div class="estadisticas">
             <div>State</div>
             <div id="statisticsShow"></div>
-            <input class="boton nes-btn is-primary" type="button" value="newgame" onclick="newGame()"></input>
         </div>
         <!--escenario -->
         <div class="scene">
             <!-- respuestas -->
             <div class="scene__respuesta">
                 <div class="respuestaBoton">
-                    <div id="answerShow">asd</div>
+                    <div id="answerShow">...................</div>
                 </div>
                 <div class="respuestaInstancia">
-                    <div id="questionShow">asd</div>
+                    <div id="questionShow">.......html......</div>
                 </div>
             </div>
         </div>
@@ -71,16 +73,20 @@
                 <!-- dialogos -->
                 <div class="cuadroDialogos">
                     <!-- d1,d2,d3,d4 -->
-                    <div class="dialogo" id="dialog1Show">Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
-                    <div class="dialogo" id="dialog2Show">Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
-                    <div class="dialogo" id="dialog3Show">Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
-                    <div class="dialogo" id="dialog4Show">Lorem ipsum dolor sit amet consectetur, adipisicing elit.Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
+                    <div class="dialogo" id="dialog1Show">...................................html..............................</div>
+                    <div class="dialogo" id="dialog2Show">...................................html..............................</div>
+                    <div class="dialogo" id="dialog3Show">...................................html..............................</div>
+                    <div class="dialogo" id="dialog4Show">...................................html..............................</div>
                 </div>
             </div>
         </div>
     </div>
 </body>
-<script src="web.js"></script>    
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!-- dialogos -->
+<script src="web.js"></script>
+<!-- script -->
 <script src="script.js"></script>
 
 </html>

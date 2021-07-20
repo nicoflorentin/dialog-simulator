@@ -15,6 +15,20 @@ body {
     background-repeat: repeat;
     background-size: 500px;
 
+    position: relative;
+}
+
+.perdiste {
+    position: fixed; /* or absolute */
+    top: 50%;
+    left: 50%;
+}
+
+.botonNewGame {
+    position: absolute;
+    top: 1vw;
+    right: 1vh;
+    font-size: 10px;
 }
 
 /*GRID*/
@@ -80,9 +94,12 @@ font-size: 70%;
     padding-bottom: 1%;
     width: 90%;
 
+    text-align: center;
+
 }
 
 .respuestaBoton {
+
 }
 
 .respuestaInstancia {

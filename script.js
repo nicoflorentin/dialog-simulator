@@ -7,6 +7,7 @@ console.log("script OK");
 let playable = false;
 let instance = 0;
 let state = 10;
+let lastChoice = null;
 let playerName = localStorage.getItem("playerName");
 
 let dialog1Show = document.getElementById("dialog1Show");
@@ -29,8 +30,10 @@ if (playerName != "") {
 
 // VERIFICAR SI HAY UN NOMBRE GUARDADO, RECUPERAR DATOS, BORRAR FORMULARIO Y MOSTRAR ESTADO GUARDADO
 if (playable) {
+
     instance = parseInt(localStorage.getItem("instance"));
     state = parseInt(localStorage.getItem("state"));
+    lastChoice = localStorage.getItem("lastChoice")
     console.log("datos cargados!")
     eraseForm();
     buttonPress("showcurrent");
@@ -56,8 +59,7 @@ function submitName() {
         instance++;
         buttonPress("showcurrent");
         localStorage.setItem('playerName', playerName);
-        localStorage.setItem("instance", instance);
-        localStorage.setItem("state", state);
+        storeData();
 
     } else {
 
@@ -80,11 +82,11 @@ function newGame() {
 }
 
 // FUNCION PARA GUARDAR DATOS
-
 function storeData() {
 
     localStorage.setItem("instance", instance);
     localStorage.setItem("state", state);
+    localStorage.setItem("lastChoice", lastChoice);
 }
 
 // FUNCION RESETEAR STORAGE
@@ -93,6 +95,7 @@ function resetStorage() {
     localStorage.setItem('instance', 0);
     localStorage.setItem('state', 10);
     localStorage.setItem('playerName', "");
+    localStorage.setItem('lastChoice', null);
 }
 
 // FUNCION ELIMINAR FORMULARIO
@@ -118,7 +121,7 @@ function showForm() {
 // FUNCION QUE DETERMINA QUE HACE CADA BOTON
 function buttonPress(buttonSelect) {
 
-    noinstancemod:
+    nochoicesave:
     if (instance <= 10 && playable) {
 
         switch (buttonSelect) {
@@ -140,7 +143,7 @@ function buttonPress(buttonSelect) {
 
             case "b":
                 instance++
-                console.log("boton B, intancia " + instance);
+                console.log("boton B, instance: " + instance + ", state: " + state + " last choice: " + lastChoice);
                 dialog1Show.innerHTML = web[instance].botonA.dialog;
                 dialog2Show.innerHTML = web[instance].botonB.dialog;
                 dialog3Show.innerHTML = web[instance].botonC.dialog;
@@ -153,7 +156,7 @@ function buttonPress(buttonSelect) {
 
             case "c":
                 instance++
-                console.log("boton C, intancia " + instance);
+                console.log("boton C, instance: " + instance + ", state: " + state + " last choice: " + lastChoice);
                 dialog1Show.innerHTML = web[instance].botonA.dialog;
                 dialog2Show.innerHTML = web[instance].botonB.dialog;
                 dialog3Show.innerHTML = web[instance].botonC.dialog;
@@ -166,7 +169,7 @@ function buttonPress(buttonSelect) {
 
             case "d":
                 instance++
-                console.log("boton D, intancia " + instance);
+                console.log("boton D, instance: " + instance + ", state: " + state + " last choice: " + lastChoice);
                 dialog1Show.innerHTML = web[instance].botonA.dialog;
                 dialog2Show.innerHTML = web[instance].botonB.dialog;
                 dialog3Show.innerHTML = web[instance].botonC.dialog;
@@ -178,7 +181,7 @@ function buttonPress(buttonSelect) {
                 break
 
             case "newgame":
-                console.log("new game!, ", "instancia " + instance + ", state " + state);
+                console.log("new game!, instancia " + instance + ", state " + state);
                 dialog1Show.innerHTML = web[0].botonA.dialog;
                 dialog2Show.innerHTML = web[0].botonB.dialog;
                 dialog3Show.innerHTML = web[0].botonC.dialog;
@@ -186,10 +189,10 @@ function buttonPress(buttonSelect) {
                 answerShow.innerHTML = web[0].botonD.answer;
                 questionShow.innerHTML = web[0].question;
                 statisticsShow.innerHTML = state;
-                break
+                break nochoicesave;
 
             case "showcurrent":
-                console.log("show current!, ", "instancia " + instance + ", state " + state);
+                console.log("show current!, instance: " + instance + ", state: " + state + " last choice: " + lastChoice);
                 dialog1Show.innerHTML = web[instance].botonA.dialog;
                 dialog2Show.innerHTML = web[instance].botonB.dialog;
                 dialog3Show.innerHTML = web[instance].botonC.dialog;
@@ -197,19 +200,19 @@ function buttonPress(buttonSelect) {
                 answerShow.innerHTML = "";
                 questionShow.innerHTML = web[instance].question;
                 statisticsShow.innerHTML = state;
-                break
+                break nochoicesave;
         }
 
-        // guarda instancia y state en local
+        // GUARDAR instancia y state en local
+        lastChoice = buttonSelect;
         storeData();
-
-        console.log("instance: " + instance + ", state: " + state)
+        console.log("instance: " + instance + ", state: " + state + " last choice: " + buttonSelect)
     }
+
     if (state < 1) {
         $("body").append(`<div class='perdiste'>
                             <p>Perdiste!</p>
-                         </div>`
-                         );
+                         </div>`);
         resetStorage();
     }
 

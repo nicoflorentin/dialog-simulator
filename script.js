@@ -9,7 +9,6 @@ let instance = 0;
 let state = 10;
 let playerName = localStorage.getItem("playerName");
 
-
 let dialog1Show = document.getElementById("dialog1Show");
 let dialog2Show = document.getElementById("dialog2Show");
 let dialog3Show = document.getElementById("dialog3Show");
@@ -26,12 +25,6 @@ let statisticsShow = document.getElementById("statisticsShow");
 if (playerName != "") {
 
     playable = true;
-} else {
-
-    // butonpress necesita playable true para funcionar, quedó desprolijo
-    playable = true;
-    buttonPress("showcurrent");
-    playable = false;
 }
 
 // VERIFICAR SI HAY UN NOMBRE GUARDADO, RECUPERAR DATOS, BORRAR FORMULARIO Y MOSTRAR ESTADO GUARDADO
@@ -41,12 +34,11 @@ if (playable) {
     console.log("datos cargados!")
     eraseForm();
     buttonPress("showcurrent");
-
 }
 
-//////////////////////////////
-// DECLARACION DE FUNCIONES //
-//////////////////////////////
+///////////////
+// FUNCIONES //
+///////////////
 
 // FUNCION GUARDAR EL NOMBRE, MOSTRAR NOMBRE Y OCULTAR INPUT
 function submitName() {
@@ -87,6 +79,14 @@ function newGame() {
     console.log("new game! instance " + instance + " state " + state)
 }
 
+// FUNCION PARA GUARDAR DATOS
+
+function storeData() {
+
+    localStorage.setItem("instance", instance);
+    localStorage.setItem("state", state);
+}
+
 // FUNCION RESETEAR STORAGE
 function resetStorage() {
 
@@ -123,6 +123,7 @@ function buttonPress(buttonSelect) {
 
         switch (buttonSelect) {
             case "a":
+                instance++
                 console.log("boton A, intancia " + instance);
                 // imprimo en el html los dialogos a elegir
                 dialog1Show.innerHTML = web[instance].botonA.dialog;
@@ -135,10 +136,10 @@ function buttonPress(buttonSelect) {
                 // llamo a la funcion del objeto con su sumador propio y modifico el status
                 web[instance].botonA.dialogStateChange();
                 statisticsShow.innerHTML = state;
-                // pasa a la siguiente instancia
                 break;
 
             case "b":
+                instance++
                 console.log("boton B, intancia " + instance);
                 dialog1Show.innerHTML = web[instance].botonA.dialog;
                 dialog2Show.innerHTML = web[instance].botonB.dialog;
@@ -148,10 +149,10 @@ function buttonPress(buttonSelect) {
                 questionShow.innerHTML = web[instance].question;
                 web[instance].botonB.dialogStateChange();
                 statisticsShow.innerHTML = state;
-                // pasa a la siguiente instancia
                 break;
 
             case "c":
+                instance++
                 console.log("boton C, intancia " + instance);
                 dialog1Show.innerHTML = web[instance].botonA.dialog;
                 dialog2Show.innerHTML = web[instance].botonB.dialog;
@@ -161,10 +162,10 @@ function buttonPress(buttonSelect) {
                 questionShow.innerHTML = web[instance].question;
                 web[instance].botonC.dialogStateChange();
                 statisticsShow.innerHTML = state;
-                // pasa a la siguiente instancia
-                break;
+                break
 
             case "d":
+                instance++
                 console.log("boton D, intancia " + instance);
                 dialog1Show.innerHTML = web[instance].botonA.dialog;
                 dialog2Show.innerHTML = web[instance].botonB.dialog;
@@ -174,8 +175,7 @@ function buttonPress(buttonSelect) {
                 questionShow.innerHTML = web[instance].question;
                 web[instance].botonD.dialogStateChange();
                 statisticsShow.innerHTML = state;
-                // pasa a la siguiente instancia
-                break;
+                break
 
             case "newgame":
                 console.log("new game!, ", "instancia " + instance + ", state " + state);
@@ -186,7 +186,7 @@ function buttonPress(buttonSelect) {
                 answerShow.innerHTML = web[0].botonD.answer;
                 questionShow.innerHTML = web[0].question;
                 statisticsShow.innerHTML = state;
-                break noinstancemod;
+                break
 
             case "showcurrent":
                 console.log("show current!, ", "instancia " + instance + ", state " + state);
@@ -197,22 +197,19 @@ function buttonPress(buttonSelect) {
                 answerShow.innerHTML = "";
                 questionShow.innerHTML = web[instance].question;
                 statisticsShow.innerHTML = state;
-                break noinstancemod;
+                break
         }
 
-        instance++
-
         // guarda instancia y state en local
-        localStorage.setItem("instance", instance);
-        localStorage.setItem("state", state);
+        storeData();
 
         console.log("instance: " + instance + ", state: " + state)
     }
     if (state < 1) {
-        let body = document.getElementById("body")
-        body.innerHTML = `<div class='perdiste'>
+        $("body").append(`<div class='perdiste'>
                             <p>Perdiste!</p>
-                         </div>`;
+                         </div>`
+                         );
         resetStorage();
     }
 

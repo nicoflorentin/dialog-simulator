@@ -84,13 +84,23 @@ font-size: 70%;
     justify-content: flex-end;
     align-items: center;
 
-    background-image: url(npc/upsetGB.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
+.scene__personaje {
+    display: none;
+    height:  90%;
+
+}
+
+.scene__personaje__img {
+    height: 100%;
+}
+
 .scene__respuesta {
+    display: none;
     padding-bottom: 1%;
     width: 90%;
 
@@ -138,6 +148,7 @@ font-size: 70%;
 }
 
 .dialogo {
+    display: none;
     padding-left: 3%;
     font-size: 70%;
 }

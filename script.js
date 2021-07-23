@@ -7,16 +7,12 @@ console.log("script OK");
 let playable = false;
 let instance = 0;
 let state = 10;
-let lastChoice = null;
+let stateRange = undefined;
+let instanceRange = undefined;
+let lastChoice = undefined;
 let playerName = localStorage.getItem("playerName");
 
-let dialog1Show = document.getElementById("dialog1Show");
-let dialog2Show = document.getElementById("dialog2Show");
-let dialog3Show = document.getElementById("dialog3Show");
-let dialog4Show = document.getElementById("dialog4Show");
-let answerShow = document.getElementById("answerShow");
-let questionShow = document.getElementById("questionShow");
-let statisticsShow = document.getElementById("statisticsShow");
+let animSec = 500;
 
 /////////////////////////////////
 // APENAS SE EJECUTA EL CÓDIGO //
@@ -36,14 +32,29 @@ if (playable) {
     lastChoice = localStorage.getItem("lastChoice")
     console.log("datos cargados!")
     eraseForm();
+
+    $("#imgPersonaje").fadeIn(animSec);
+    $(".scene__respuesta").fadeIn(animSec);
+    $(".dialogo").css("display","none")
+                .fadeIn(animSec);
+
     buttonPress("showcurrent");
+} else {
+
+    playable = true;
+
+    $("#imgPersonaje").fadeIn(animSec);
+    $(".scene__respuesta").fadeIn(animSec);
+
+    buttonPress("newgame");
+    playable = false;
 }
 
 ///////////////
 // FUNCIONES //
 ///////////////
 
-// FUNCION GUARDAR EL NOMBRE, MOSTRAR NOMBRE Y OCULTAR INPUT
+//GUARDAR EL NOMBRE, MOSTRAR NOMBRE Y OCULTAR INPUT
 function submitName() {
 
     // recuperar nombre del input
@@ -57,6 +68,12 @@ function submitName() {
         playable = true;
         eraseForm();
         instance++;
+
+        $(".scene__respuesta").fadeIn(animSec);
+        $("#imgPersonaje").fadeIn(animSec);
+        $(".dialogo").css("display","none")
+                    .fadeIn(animSec);
+
         buttonPress("showcurrent");
         localStorage.setItem('playerName', playerName);
         storeData();
@@ -68,12 +85,19 @@ function submitName() {
     }
 }
 
-// FUNCION BOTON NUEVO JUEGO
+//BOTON NUEVO JUEGO
 function newGame() {
 
     resetStorage();
     instance = 0;
     state = 10;
+
+    $("#imgPersonaje").css("display","none");
+    $("#imgPersonaje").fadeIn(animSec);
+    $(".scene__respuesta").fadeIn(animSec);
+    $(".dialogo").css("display","none")
+                    .fadeIn(animSec);
+
     buttonPress("newgame");
     playable = false;
     showForm();
@@ -81,7 +105,7 @@ function newGame() {
     console.log("new game! instance " + instance + " state " + state)
 }
 
-// FUNCION PARA GUARDAR DATOS
+//GUARDAR DATOS
 function storeData() {
 
     localStorage.setItem("instance", instance);
@@ -89,16 +113,16 @@ function storeData() {
     localStorage.setItem("lastChoice", lastChoice);
 }
 
-// FUNCION RESETEAR STORAGE
+//RESETEAR STORAGE
 function resetStorage() {
 
     localStorage.setItem('instance', 0);
     localStorage.setItem('state', 10);
     localStorage.setItem('playerName', "");
-    localStorage.setItem('lastChoice', null);
+    localStorage.setItem('lastChoice', undefined);
 }
 
-// FUNCION ELIMINAR FORMULARIO
+//ELIMINAR FORMULARIO
 function eraseForm() {
 
     // eliminar formulario
@@ -107,21 +131,31 @@ function eraseForm() {
     $("#headBar").append(`<p>${playerName}</p>`);
 }
 
-// FUNCION INSERTAR FORMULARIO
+//INSERTAR FORMULARIO
 function showForm() {
 
-    let div = document.getElementById("headBar")
-    div.innerHTML = `<p class="title">Name</p>
+    $("#headBar").html(`<p class="title">Name</p>
                         <div class= "headBar__flex nes-field" id="nameDiv">
                             <input type="text" id="nameForm" name="nameForm" class="nes-input headBar__input" placeholder="Input name to begin">
                             <input class="nes-btn is-primary" type="button" onclick="submitName()" value="Enter">
-                        </div>`;
+                        </div>`);
 }
 
-// FUNCION QUE DETERMINA QUE HACE CADA BOTON
+
+$(".boton").click(
+    function(){
+        $(".scene__respuesta").css("display","none")
+                    .fadeIn(animSec)        
+        $(".dialogo").css("display","none")
+                    .fadeIn(animSec)
+    }
+);
+
+
+
+//DETERMINA QUE HACE CADA BOTON
 function buttonPress(buttonSelect) {
 
-    nochoicesave:
     if (instance <= 10 && playable) {
 
         switch (buttonSelect) {
@@ -129,78 +163,78 @@ function buttonPress(buttonSelect) {
                 instance++
                 console.log("boton A, intancia " + instance);
                 // imprimo en el html los dialogos a elegir
-                dialog1Show.innerHTML = web[instance].botonA.dialog;
-                dialog2Show.innerHTML = web[instance].botonB.dialog;
-                dialog3Show.innerHTML = web[instance].botonC.dialog;
-                dialog4Show.innerHTML = web[instance].botonD.dialog;
+                $("#dialog1Show").html(web[instance].botonA.dialog);
+                $("#dialog2Show").html(web[instance].botonB.dialog);
+                $("#dialog3Show").html(web[instance].botonC.dialog);
+                $("#dialog4Show").html(web[instance].botonD.dialog);
                 // imprimo en el html la respuesta al dialogo
-                answerShow.innerHTML = web[instance - 1].botonA.answer;
-                questionShow.innerHTML = web[instance].question;
+                $("#answerShow").html(web[instance - 1].botonA.answer);
+                $("#questionShow").html(web[instance].question);
                 // llamo a la funcion del objeto con su sumador propio y modifico el status
                 web[instance].botonA.dialogStateChange();
-                statisticsShow.innerHTML = state;
+                $("#statisticsShow").html(state);
                 break;
 
             case "b":
                 instance++
                 console.log("boton B, instance: " + instance + ", state: " + state + " last choice: " + lastChoice);
-                dialog1Show.innerHTML = web[instance].botonA.dialog;
-                dialog2Show.innerHTML = web[instance].botonB.dialog;
-                dialog3Show.innerHTML = web[instance].botonC.dialog;
-                dialog4Show.innerHTML = web[instance].botonD.dialog;
-                answerShow.innerHTML = web[instance - 1].botonB.answer;
-                questionShow.innerHTML = web[instance].question;
+                $("#dialog1Show").html(web[instance].botonA.dialog);
+                $("#dialog2Show").html(web[instance].botonB.dialog);
+                $("#dialog3Show").html(web[instance].botonC.dialog);
+                $("#dialog4Show").html(web[instance].botonD.dialog);
+                $("#answerShow").html(web[instance - 1].botonB.answer);
+                $("#questionShow").html(web[instance].question);
                 web[instance].botonB.dialogStateChange();
-                statisticsShow.innerHTML = state;
+                $("#statisticsShow").html(state);
                 break;
 
             case "c":
                 instance++
                 console.log("boton C, instance: " + instance + ", state: " + state + " last choice: " + lastChoice);
-                dialog1Show.innerHTML = web[instance].botonA.dialog;
-                dialog2Show.innerHTML = web[instance].botonB.dialog;
-                dialog3Show.innerHTML = web[instance].botonC.dialog;
-                dialog4Show.innerHTML = web[instance].botonD.dialog;
-                answerShow.innerHTML = web[instance - 1].botonC.answer;
-                questionShow.innerHTML = web[instance].question;
+                $("#dialog1Show").html(web[instance].botonA.dialog);
+                $("#dialog2Show").html(web[instance].botonB.dialog);
+                $("#dialog3Show").html(web[instance].botonC.dialog);
+                $("#dialog4Show").html(web[instance].botonD.dialog);
+                $("#answerShow").html(web[instance - 1].botonC.answer);
+                $("#questionShow").html(web[instance].question);
                 web[instance].botonC.dialogStateChange();
-                statisticsShow.innerHTML = state;
+                $("#statisticsShow").html(state);
                 break
 
             case "d":
                 instance++
                 console.log("boton D, instance: " + instance + ", state: " + state + " last choice: " + lastChoice);
-                dialog1Show.innerHTML = web[instance].botonA.dialog;
-                dialog2Show.innerHTML = web[instance].botonB.dialog;
-                dialog3Show.innerHTML = web[instance].botonC.dialog;
-                dialog4Show.innerHTML = web[instance].botonD.dialog;
-                answerShow.innerHTML = web[instance - 1].botonD.answer;
-                questionShow.innerHTML = web[instance].question;
+                $("#dialog1Show").html(web[instance].botonA.dialog);
+                $("#dialog2Show").html(web[instance].botonB.dialog);
+                $("#dialog3Show").html(web[instance].botonC.dialog);
+                $("#dialog4Show").html(web[instance].botonD.dialog);
+                $("#answerShow").html(web[instance - 1].botonD.answer);
+                $("#questionShow").html(web[instance].question);
                 web[instance].botonD.dialogStateChange();
-                statisticsShow.innerHTML = state;
+                $("#statisticsShow").html(state);
                 break
 
             case "newgame":
                 console.log("new game!, instancia " + instance + ", state " + state);
-                dialog1Show.innerHTML = web[0].botonA.dialog;
-                dialog2Show.innerHTML = web[0].botonB.dialog;
-                dialog3Show.innerHTML = web[0].botonC.dialog;
-                dialog4Show.innerHTML = web[0].botonD.dialog;
-                answerShow.innerHTML = web[0].botonD.answer;
-                questionShow.innerHTML = web[0].question;
-                statisticsShow.innerHTML = state;
-                break nochoicesave;
+                $("#dialog1Show").html(web[0].botonA.dialog);
+                $("#dialog2Show").html(web[0].botonB.dialog);
+                $("#dialog3Show").html(web[0].botonC.dialog);
+                $("#dialog4Show").html(web[0].botonD.dialog);
+                $("#answerShow").html(web[0].botonD.answer);
+                $("#questionShow").html(web[0].question);
+                $("#statisticsShow").html(state);
+                break;
 
             case "showcurrent":
                 console.log("show current!, instance: " + instance + ", state: " + state + " last choice: " + lastChoice);
-                dialog1Show.innerHTML = web[instance].botonA.dialog;
-                dialog2Show.innerHTML = web[instance].botonB.dialog;
-                dialog3Show.innerHTML = web[instance].botonC.dialog;
-                dialog4Show.innerHTML = web[instance].botonD.dialog;
-                answerShow.innerHTML = "";
-                questionShow.innerHTML = web[instance].question;
-                statisticsShow.innerHTML = state;
-                break nochoicesave;
+                $("#dialog1Show").html(web[instance].botonA.dialog);
+                $("#dialog2Show").html(web[instance].botonB.dialog);
+                $("#dialog3Show").html(web[instance].botonC.dialog);
+                $("#dialog4Show").html(web[instance].botonD.dialog);
+                $("#answerShow").html("");
+                $("#questionShow").html(web[instance].question);
+                $("#statisticsShow").html(state);
+                break;
         }
 
         // GUARDAR instancia y state en local
@@ -217,3 +251,28 @@ function buttonPress(buttonSelect) {
     }
 
 }
+
+//CLASIFICA ESTADOS
+function stateClassif() {
+
+    if (state >= 13 && state <= 20) {
+        stateRange = vgood;
+    } else if (state >= 7 && state <= 13){
+        stateRange = good;
+    } else if (state >= 1 && state <= 7){
+        stateRange = bad;
+    }
+}
+
+//CLASIFICA INSTANCIAS
+function instanceClassif() {
+
+    if (state > 7 && state <= 10) {
+        instanceRange = ending;
+    } else if (state > 3 && state <= 7){
+        instanceRange = mid;
+    } else if (state >= 1 && state <= 3){
+        instanceRange = start;
+    }
+}
+

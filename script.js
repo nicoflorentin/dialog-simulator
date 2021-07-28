@@ -12,6 +12,7 @@ let instanceRange = undefined;
 let lastChoice = undefined;
 let playerName = localStorage.getItem("playerName");
 
+// animacion
 let animSec = 500;
 
 /////////////////////////////////
@@ -141,7 +142,32 @@ function showForm() {
                         </div>`);
 }
 
+//CLASIFICA ESTADOS
+function stateClassif() {
 
+    if (state >= 13 && state <= 20) {
+        stateRange = "vgood";
+    } else if (state >= 7 && state <= 13){
+        stateRange = "good";
+    } else if (state >= 1 && state <= 7){
+        stateRange = "bad";
+    }
+}
+
+//CLASIFICA INSTANCIAS
+function instanceClassif() {
+
+    if (instance > 7 && state <= 10) {
+        instanceRange = "ending";
+    } else if (instance > 3 && state <= 7){
+        instanceRange = "mid";
+    } else if (instance >= 1 && state <= 3){
+        instanceRange = "start";
+    }
+}
+
+
+// ANIMACION DE BORRAR DIALOGOS Y RESPUESTAS (falta: agregar imagenes)
 $(".boton").click(
     function(){
         $(".scene__respuesta").css("display","none")
@@ -237,6 +263,30 @@ function buttonPress(buttonSelect) {
                 break;
         }
 
+
+        instanceClassif();
+        stateClassif();
+
+        switch (instanceRange) {
+
+            case "ending":
+                console.log("ending!");
+            case "mid":
+                console.log("mid!");
+            case "start":
+                console.log("start!");
+        }
+
+        switch (stateRange) {
+
+            case "vgood":
+                console.log("vgood state!");
+            case "good":
+                console.log("good state!");
+            case "bad":
+                console.log("bad state :(");
+        }
+
         // GUARDAR instancia y state en local
         lastChoice = buttonSelect;
         storeData();
@@ -244,7 +294,7 @@ function buttonPress(buttonSelect) {
     }
 
     if (state < 1) {
-        $("body").append(`<div class='perdiste'>
+        $("body").html(`<div class='perdiste'>
                             <p>Perdiste!</p>
                          </div>`);
         resetStorage();
@@ -252,27 +302,25 @@ function buttonPress(buttonSelect) {
 
 }
 
-//CLASIFICA ESTADOS
-function stateClassif() {
+var request = undefined;
 
-    if (state >= 13 && state <= 20) {
-        stateRange = vgood;
-    } else if (state >= 7 && state <= 13){
-        stateRange = good;
-    } else if (state >= 1 && state <= 7){
-        stateRange = bad;
-    }
-}
+// API
 
-//CLASIFICA INSTANCIAS
-function instanceClassif() {
+$(document).ready(function () {
 
-    if (state > 7 && state <= 10) {
-        instanceRange = ending;
-    } else if (state > 3 && state <= 7){
-        instanceRange = mid;
-    } else if (state >= 1 && state <= 3){
-        instanceRange = start;
-    }
-}
+    $.ajax({
+        url: 'http://api.openweathermap.org/data/2.5/weather?id=3433955&mode=html&units=metric&appid=6392f1c234cee69be56b94eeec698c27',
+        type: "GET",
+        dataType: "jsonp",
+
+        success: function(data) {
+            console.log(data);
+            request = data;
+            $(".clima").append(`<p class="clima__temp">${request['main']['temp'].toFixed(1)}</p>` + " °C")
+        }
+    });
+});
+
+
+// $(".clima").append(`<p>${request['main']['temp']}</p>`)
 

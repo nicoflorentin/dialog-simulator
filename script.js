@@ -316,7 +316,7 @@ $(document).ready(function () {
         success: function(data) {
             console.log(data);
             request = data;
-            $(".clima").append(`<p class="clima__temp">${request['main']['temp'].toFixed(1)}</p>` + " °C")
+            $(".clima").append(`<p> ${request['main']['temp'].toFixed(1)}°C </p>`)
         }
     });
 });

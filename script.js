@@ -1,5 +1,6 @@
 console.log("script OK");
 
+
 //////////////////////////////
 // DECLARACION DE VARIABLES //
 //////////////////////////////
@@ -237,7 +238,7 @@ function buttonPress(buttonSelect) {
                 $("#answerShow").html(web[instance - 1].botonA.answer);
                 $("#questionShow").html(web[instance].question);
                 // llamo a la funcion del objeto con su sumador propio y modifico el status
-                web[instance].botonA.dialogStateChange();
+                web[instance -1].botonA.dialogStateChange();
                 // muestro state en pantalla
                 $("#statisticsShow").html(state);
                 break;
@@ -251,7 +252,7 @@ function buttonPress(buttonSelect) {
                 $("#dialog4Show").html(web[instance].botonD.dialog);
                 $("#answerShow").html(web[instance - 1].botonB.answer);
                 $("#questionShow").html(web[instance].question);
-                web[instance].botonB.dialogStateChange();
+                web[instance -1].botonB.dialogStateChange();
                 $("#statisticsShow").html(state);
                 break;
 
@@ -264,7 +265,7 @@ function buttonPress(buttonSelect) {
                 $("#dialog4Show").html(web[instance].botonD.dialog);
                 $("#answerShow").html(web[instance - 1].botonC.answer);
                 $("#questionShow").html(web[instance].question);
-                web[instance].botonC.dialogStateChange();
+                web[instance -1].botonC.dialogStateChange();
                 $("#statisticsShow").html(state);
                 break
 
@@ -277,7 +278,7 @@ function buttonPress(buttonSelect) {
                 $("#dialog4Show").html(web[instance].botonD.dialog);
                 $("#answerShow").html(web[instance - 1].botonD.answer);
                 $("#questionShow").html(web[instance].question);
-                web[instance].botonD.dialogStateChange();
+                web[instance -1].botonD.dialogStateChange();
                 $("#statisticsShow").html(state);
                 break
 
@@ -310,13 +311,30 @@ function buttonPress(buttonSelect) {
         lastChoice = buttonSelect;
         storeData();
         console.log("instance: " + instance + ", state: " + state + " last choice: " + buttonSelect)
-    }
 
-    if (state < 1) {
-        $("body").html(`<div class='perdiste'>
+    } else if (state < 1) {
+        $("body").html(`<div class='pantallaFinal'>
                             <p>Perdiste!</p>
                          </div>`);
         resetStorage();
+    } else if (instance >10) {
+
+        $("body").html(`<div class='pantallaFinal'>
+                            <h1>Llegaste al final!</h1>
+                            <p>Éste juego fue desarrollado por <strong>Nicolás Florentín</strong> durante el curso de <strong>JavaScript</strong> en <strong>CoderHouse</strong></p>
+                            <p>Basado en el libro Tokio Blues Noewegian Wood escrito por Haruki Murakami</p>
+                            <p>Pregunta 2 página 105</p>
+                            <p>Pregunta 3 página 149</p>
+                            <p>Pregunta 4 página 277</p>
+                            <p>Pregunta 5 página 8</p>
+                            <p>Pregunta 6 página 78</p>
+                            <p>Pregunta 7 página 269</p>
+                            <p>Pregunta 8 página 138</p>
+                            <p>Pregunta 9 página 292</p>
+                            <p>Pregunta 10 página 152</p>
+                            <p class="pantallaFinal__gracias">Gracias por jugar!</p>
+                         </div>`);
+
     }
 
 }
@@ -333,7 +351,7 @@ $(document).ready(function () {
         dataType: "jsonp",
 
         success: function(data) {
-            // console.log(`data de la api: ${data}`);
+            console.log(`data de la api: ${data}`);
             request = data;
             $(".clima").append(`<p> ${request['main']['temp'].toFixed(1)}°C </p>`)
         }

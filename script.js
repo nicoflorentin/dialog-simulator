@@ -7,13 +7,13 @@ console.log("script OK");
 let playable = false;
 let instance = 0;
 let state = 10;
-let stateRange = undefined;
-let instanceRange = undefined;
 let lastChoice = undefined;
 let playerName = localStorage.getItem("playerName");
-
+let imgMatrix = ["url(./npc/endBad.png)", "url(./npc/midGood.png)", "url(./npc/startVgood.png)"]
+// url(./npc/startGood.png)
+let stateRange = undefined;
 // animacion
-let animSec = 500;
+let animSec = 1500;
 
 /////////////////////////////////
 // APENAS SE EJECUTA EL CÓDIGO //
@@ -25,9 +25,10 @@ if (playerName != "") {
     playable = true;
 }
 
-// VERIFICAR SI HAY UN NOMBRE GUARDADO, RECUPERAR DATOS, BORRAR FORMULARIO Y MOSTRAR ESTADO GUARDADO
+// VERIFICAR SI HAY UN NOMBRE DE JUGADOR GUARDADO, RECUPERAR DATOS, BORRAR FORMULARIO DE NOMBRE Y MOSTRAR ESTADO GUARDADO
 if (playable) {
 
+    // obtiene los datos de partida guardada del storage
     instance = parseInt(localStorage.getItem("instance"));
     state = parseInt(localStorage.getItem("state"));
     lastChoice = localStorage.getItem("lastChoice")
@@ -39,6 +40,7 @@ if (playable) {
     $(".dialogo").css("display","none")
                 .fadeIn(animSec);
 
+    // imprime los dialogos correspondientes a los datos cargados
     buttonPress("showcurrent");
 } else {
 
@@ -47,7 +49,9 @@ if (playable) {
     $("#imgPersonaje").fadeIn(animSec);
     $(".scene__respuesta").fadeIn(animSec);
 
+    // ejecuta nuevo juego
     buttonPress("newgame");
+    // pongo en false para que requiera llenar el formulario
     playable = false;
 }
 
@@ -66,6 +70,7 @@ function submitName() {
 
     if (playerName != "") {
 
+        // cuando guarda nombre se vuelve jugable
         playable = true;
         eraseForm();
         instance++;
@@ -75,8 +80,11 @@ function submitName() {
         $(".dialogo").css("display","none")
                     .fadeIn(animSec);
 
+        // nuestra los datos de la instancia
         buttonPress("showcurrent");
+        // guarda el noimbre en storage
         localStorage.setItem('playerName', playerName);
+        // guarda los datos de la instancia
         storeData();
 
     } else {
@@ -89,7 +97,9 @@ function submitName() {
 //BOTON NUEVO JUEGO
 function newGame() {
 
+    // resetea los datos guardados
     resetStorage();
+    // resetea las variables
     instance = 0;
     state = 10;
 
@@ -99,10 +109,11 @@ function newGame() {
     $(".dialogo").css("display","none")
                     .fadeIn(animSec);
 
+    // ejecuta nuevo juego
     buttonPress("newgame");
     playable = false;
+    // muestra el formulario
     showForm();
-
     console.log("new game! instance " + instance + " state " + state)
 }
 
@@ -128,11 +139,11 @@ function eraseForm() {
 
     // eliminar formulario
     $("#nameDiv").remove();
-    // agregar name al dom
-    $("#headBar").append(`<p>${playerName}</p>`);
+    // agregar mnombre al dom
+    $("#headBar").append(`<p class="headBar__name">${playerName}</p>`);
 }
 
-//INSERTAR FORMULARIO
+//MOSTRAR FORMULARIO VACÍO
 function showForm() {
 
     $("#headBar").html(`<p class="title">Name</p>
@@ -142,40 +153,68 @@ function showForm() {
                         </div>`);
 }
 
-//CLASIFICA ESTADOS
-function stateClassif() {
+//DEVUELVE UNA CADENA CON LA URL DE LA IMAGEN LOCAL DEPENDIENDO DEL STATE ACTUAL
+function imgOutput() {
 
+    // clasifica los estados en tres strings
     if (state >= 13 && state <= 20) {
-        stateRange = "vgood";
+        stateRange = 3;
     } else if (state >= 7 && state <= 13){
-        stateRange = "good";
+        stateRange = 2;
     } else if (state >= 1 && state <= 7){
-        stateRange = "bad";
+        stateRange = 1;
     }
+
+    return imgMatrix[stateRange - 1];
 }
 
-//CLASIFICA INSTANCIAS
-function instanceClassif() {
+//CLASIFICA INSTANCIAS (funcionalidad a futuro)
+// function instanceClassif() {
 
-    if (instance > 7 && state <= 10) {
-        instanceRange = "ending";
-    } else if (instance > 3 && state <= 7){
-        instanceRange = "mid";
-    } else if (instance >= 1 && state <= 3){
-        instanceRange = "start";
-    }
+//     // clasifica las instancias en tres strings
+//     if (instance > 7 && state <= 10) {
+//         instanceRange = 3;
+//     } else if (instance > 3 && state <= 7){
+//         instanceRange = 2;
+//     } else if (instance >= 1 && state <= 3){
+//         instanceRange = 1;
+//     }
+// }
+
+
+/////////////////
+// ANIMACIONES //
+/////////////////
+
+// ANIMACION DE BORRAR DIALOGOS Y RESPUESTAS
+// $(".boton").click(
+
+//     function animateScene(){
+//         $(".scene__respuesta").css("display","none")
+//                     .fadeIn(animSec);
+//         $(".dialogo").css("display","none")
+//                     .fadeIn(animSec);
+//         $(".scene__personaje__img").css("display","none")
+//                     .fadeIn(animSec);
+//     }
+// );
+
+// MANEJA LAS ANIMACIONES DE LA ESCENA
+
+function animateScene(){
+
+    // animaciones de los dialogos
+    $(".scene__respuesta").css("display","none")
+                .fadeIn(animSec);
+    $(".dialogo").css("display","none")
+                .fadeIn(animSec);
+
+    // animaciones de la imagen
+    $(".scene__personaje__img").css("display","none")
+                            .fadeIn(animSec);
+    $(".scene__personaje").css("background-image", imgOutput());
+    $("#imgPersonaje").fadeIn(animSec);
 }
-
-
-// ANIMACION DE BORRAR DIALOGOS Y RESPUESTAS (falta: agregar imagenes)
-$(".boton").click(
-    function(){
-        $(".scene__respuesta").css("display","none")
-                    .fadeIn(animSec)        
-        $(".dialogo").css("display","none")
-                    .fadeIn(animSec)
-    }
-);
 
 
 
@@ -186,18 +225,20 @@ function buttonPress(buttonSelect) {
 
         switch (buttonSelect) {
             case "a":
+                // paso a la siguiente instancia
                 instance++
                 console.log("boton A, intancia " + instance);
-                // imprimo en el html los dialogos a elegir
+                // imprimo en el html los dialogos de cada boton
                 $("#dialog1Show").html(web[instance].botonA.dialog);
                 $("#dialog2Show").html(web[instance].botonB.dialog);
                 $("#dialog3Show").html(web[instance].botonC.dialog);
                 $("#dialog4Show").html(web[instance].botonD.dialog);
-                // imprimo en el html la respuesta al dialogo
+                // imprimo en el html la respuesta al dialogo del boton elegido
                 $("#answerShow").html(web[instance - 1].botonA.answer);
                 $("#questionShow").html(web[instance].question);
                 // llamo a la funcion del objeto con su sumador propio y modifico el status
                 web[instance].botonA.dialogStateChange();
+                // muestro state en pantalla
                 $("#statisticsShow").html(state);
                 break;
 
@@ -263,29 +304,7 @@ function buttonPress(buttonSelect) {
                 break;
         }
 
-
-        instanceClassif();
-        stateClassif();
-
-        switch (instanceRange) {
-
-            case "ending":
-                console.log("ending!");
-            case "mid":
-                console.log("mid!");
-            case "start":
-                console.log("start!");
-        }
-
-        switch (stateRange) {
-
-            case "vgood":
-                console.log("vgood state!");
-            case "good":
-                console.log("good state!");
-            case "bad":
-                console.log("bad state :(");
-        }
+        animateScene()
 
         // GUARDAR instancia y state en local
         lastChoice = buttonSelect;
@@ -314,7 +333,7 @@ $(document).ready(function () {
         dataType: "jsonp",
 
         success: function(data) {
-            console.log(data);
+            // console.log(`data de la api: ${data}`);
             request = data;
             $(".clima").append(`<p> ${request['main']['temp'].toFixed(1)}°C </p>`)
         }
@@ -322,5 +341,6 @@ $(document).ready(function () {
 });
 
 
-// $(".clima").append(`<p>${request['main']['temp']}</p>`)
 
+
+// $(".clima").append(`<p>${request['main']['temp']}</p>`)

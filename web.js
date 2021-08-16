@@ -36,7 +36,7 @@ const web = [{
         botonA: {
             dialog: "Dialogo A de la instancia 1",
             answer: "Respuesta del dialogo A de la instancia 1",
-            stateNumber: -3,
+            stateNumber: -5,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -44,7 +44,7 @@ const web = [{
         botonB: {
             dialog: "Dialogo B de la instancia 1",
             answer: "Respuesta del dialogo B de la instancia 1",
-            stateNumber: 2,
+            stateNumber: -2,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -52,7 +52,7 @@ const web = [{
         botonC: {
             dialog: "Dialogo C de la instancia 1",
             answer: "Respuesta del dialogo C de la instancia 1",
-            stateNumber: -3,
+            stateNumber: 1,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -60,7 +60,7 @@ const web = [{
         botonD: {
             dialog: "Dialogo D de la instancia 1",
             answer: "Respuesta del dialogo D de la instancia 1",
-            stateNumber: -2,
+            stateNumber: 3,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -72,7 +72,7 @@ const web = [{
         botonA: {
             dialog: "Dialogo A de la instancia 2 recuperado desde un objeto",
             answer: "Respuesta del dialogo A de la instancia 2",
-            stateNumber: 2,
+            stateNumber: -5,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -80,7 +80,7 @@ const web = [{
         botonB: {
             dialog: "Dialogo B de la instancia 2 recuperado desde un objeto",
             answer: "Respuesta del dialogo B de la instancia 2",
-            stateNumber: -1,
+            stateNumber: -2,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -88,7 +88,7 @@ const web = [{
         botonC: {
             dialog: "Dialogo C de la instancia 2 recuperado desde un objeto",
             answer: "Respuesta del dialogo C de la instancia 2",
-            stateNumber: -5,
+            stateNumber: 1,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -96,7 +96,7 @@ const web = [{
         botonD: {
             dialog: "Dialogo D de la instancia 2 recuperado desde un objeto",
             answer: "Respuesta del dialogo D de la instancia 2",
-            stateNumber: 2,
+            stateNumber: 3,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -108,7 +108,7 @@ const web = [{
         botonA: {
             dialog: "Dialogo A de la instancia 3 recuperado desde un objeto",
             answer: "Respuesta del dialogo A de la instancia 3",
-            stateNumber: -3,
+            stateNumber: -5,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -116,7 +116,7 @@ const web = [{
         botonB: {
             dialog: "Dialogo B de la instancia 3 recuperado desde un objeto",
             answer: "Respuesta del dialogo B de la instancia 3",
-            stateNumber: -4,
+            stateNumber: -2,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -124,7 +124,7 @@ const web = [{
         botonC: {
             dialog: "Dialogo C de la instancia 3 recuperado desde un objeto",
             answer: "Respuesta del dialogo C de la instancia 3",
-            stateNumber: 2,
+            stateNumber: 1,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -132,7 +132,7 @@ const web = [{
         botonD: {
             dialog: "Dialogo D de la instancia 3 recuperado desde un objeto",
             answer: "Respuesta del dialogo D de la instancia 3",
-            stateNumber: 2,
+            stateNumber: 3,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -144,7 +144,7 @@ const web = [{
         botonA: {
             dialog: "Dialogo A de la instancia 4 recuperado desde un objeto",
             answer: "Respuesta del dialogo A de la instancia 4",
-            stateNumber: -1,
+            stateNumber: -5,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -152,7 +152,7 @@ const web = [{
         botonB: {
             dialog: "Dialogo B de la instancia 4 recuperado desde un objeto",
             answer: "Respuesta del dialogo B de la instancia 4",
-            stateNumber: -3,
+            stateNumber: -2,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -168,7 +168,7 @@ const web = [{
         botonD: {
             dialog: "Dialogo D de la instancia 4 recuperado desde un objeto",
             answer: "Respuesta del dialogo D de la instancia 4",
-            stateNumber: -1,
+            stateNumber: 3,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -180,7 +180,7 @@ const web = [{
         botonA: {
             dialog: "Dialogo A de la instancia 5 recuperado desde un objeto",
             answer: "Respuesta del dialogo A de la instancia 5",
-            stateNumber: -3,
+            stateNumber: -5,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -188,7 +188,7 @@ const web = [{
         botonB: {
             dialog: "Dialogo B de la instancia 5 recuperado desde un objeto",
             answer: "Respuesta del dialogo B de la instancia 5",
-            stateNumber: 3,
+            stateNumber: -2,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -196,7 +196,7 @@ const web = [{
         botonC: {
             dialog: "Dialogo C de la instancia 5 recuperado desde un objeto",
             answer: "Respuesta del dialogo C de la instancia 5",
-            stateNumber: 4,
+            stateNumber: 1,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -204,7 +204,7 @@ const web = [{
         botonD: {
             dialog: "Dialogo D de la instancia 5 recuperado desde un objeto",
             answer: "Respuesta del dialogo D de la instancia 5",
-            stateNumber: -2,
+            stateNumber: -3,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -216,7 +216,7 @@ const web = [{
         botonA: {
             dialog: "Dialogo A de la instancia 6 recuperado desde un objeto",
             answer: "Respuesta del dialogo A de la instancia 6",
-            stateNumber: -1,
+            stateNumber: -5,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -224,7 +224,7 @@ const web = [{
         botonB: {
             dialog: "Dialogo B de la instancia 6 recuperado desde un objeto",
             answer: "Respuesta del dialogo B de la instancia 6",
-            stateNumber: 1,
+            stateNumber: -2,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -232,7 +232,7 @@ const web = [{
         botonC: {
             dialog: "Dialogo C de la instancia 6 recuperado desde un objeto",
             answer: "Respuesta del dialogo C de la instancia 6",
-            stateNumber: -1,
+            stateNumber: 1,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -240,7 +240,7 @@ const web = [{
         botonD: {
             dialog: "Dialogo D de la instancia 6 recuperado desde un objeto",
             answer: "Respuesta del dialogo D de la instancia 6",
-            stateNumber: -2,
+            stateNumber: 3,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -252,7 +252,7 @@ const web = [{
         botonA: {
             dialog: "Dialogo A de la instancia 7 recuperado desde un objeto",
             answer: "Respuesta del dialogo A de la instancia 7",
-            stateNumber: 2,
+            stateNumber: -5,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -260,7 +260,7 @@ const web = [{
         botonB: {
             dialog: "Dialogo B de la instancia 7 recuperado desde un objeto",
             answer: "Respuesta del dialogo B de la instancia 7",
-            stateNumber: -4,
+            stateNumber: -2,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -268,7 +268,7 @@ const web = [{
         botonC: {
             dialog: "Dialogo C de la instancia 7 recuperado desde un objeto",
             answer: "Respuesta del dialogo C de la instancia 7",
-            stateNumber: 4,
+            stateNumber: 1,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -276,7 +276,7 @@ const web = [{
         botonD: {
             dialog: "Dialogo D de la instancia 7 recuperado desde un objeto",
             answer: "Respuesta del dialogo D de la instancia 7",
-            stateNumber: 5,
+            stateNumber: 3,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -288,7 +288,7 @@ const web = [{
         botonA: {
             dialog: "Dialogo A de la instancia 8 recuperado desde un objeto",
             answer: "Respuesta del dialogo A de la instancia 8",
-            stateNumber: -1,
+            stateNumber: -5,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -296,7 +296,7 @@ const web = [{
         botonB: {
             dialog: "Dialogo B de la instancia 8 recuperado desde un objeto",
             answer: "Respuesta del dialogo B de la instancia 8",
-            stateNumber: 2,
+            stateNumber: -2,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -304,7 +304,7 @@ const web = [{
         botonC: {
             dialog: "Dialogo C de la instancia 8 recuperado desde un objeto",
             answer: "Respuesta del dialogo C de la instancia 8",
-            stateNumber: -3,
+            stateNumber: 1,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }
@@ -312,7 +312,7 @@ const web = [{
         botonD: {
             dialog: "Dialogo D de la instancia 8 recuperado desde un objeto",
             answer: "Respuesta del dialogo D de la instancia 8",
-            stateNumber: -4,
+            stateNumber: 3,
             dialogStateChange() {
                 state = state + this.stateNumber;
             }

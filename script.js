@@ -311,12 +311,9 @@ function buttonPress(buttonSelect) {
         lastChoice = buttonSelect;
         storeData();
         console.log("instance: " + instance + ", state: " + state + " last choice: " + buttonSelect)
-
-    } else if (state < 1) {
-        $("body").html(`<div class='pantallaFinal'>
-                            <p>Perdiste!</p>
-                         </div>`);
+    
         resetStorage();
+
     } else if (instance >10) {
 
         $("body").html(`<div class='pantallaFinal'>

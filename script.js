@@ -38,8 +38,8 @@ if (playable) {
 
     $("#imgPersonaje").fadeIn(animSec);
     $(".scene__respuesta").fadeIn(animSec);
-    $(".dialogo").css("display","none")
-                .fadeIn(animSec);
+    $(".dialogo").css("display", "none")
+        .fadeIn(animSec);
 
     // imprime los dialogos correspondientes a los datos cargados
     buttonPress("showcurrent");
@@ -69,7 +69,7 @@ function submitName() {
     playerName = nameValue;
 
 
-    if (playerName != null && playerName ) {
+    if (playerName != null && playerName) {
 
         // cuando guarda nombre se vuelve jugable
         playable = true;
@@ -78,8 +78,8 @@ function submitName() {
 
         $(".scene__respuesta").fadeIn(animSec);
         $("#imgPersonaje").fadeIn(animSec);
-        $(".dialogo").css("display","none")
-                    .fadeIn(animSec);
+        $(".dialogo").css("display", "none")
+            .fadeIn(animSec);
 
         // nuestra los datos de la instancia
         buttonPress("showcurrent");
@@ -104,11 +104,11 @@ function newGame() {
     instance = 0;
     state = 10;
 
-    $("#imgPersonaje").css("display","none");
+    $("#imgPersonaje").css("display", "none");
     $("#imgPersonaje").fadeIn(animSec);
     $(".scene__respuesta").fadeIn(animSec);
-    $(".dialogo").css("display","none")
-                    .fadeIn(animSec);
+    $(".dialogo").css("display", "none")
+        .fadeIn(animSec);
 
     // ejecuta nuevo juego
     buttonPress("newgame");
@@ -160,9 +160,9 @@ function imgOutput() {
     // clasifica los estados en tres strings
     if (state >= 13 && state <= 20) {
         stateRange = 3;
-    } else if (state >= 7 && state <= 13){
+    } else if (state >= 7 && state <= 13) {
         stateRange = 2;
-    } else if (state >= 1 && state <= 7){
+    } else if (state >= 1 && state <= 7) {
         stateRange = 1;
     }
 
@@ -202,17 +202,17 @@ function imgOutput() {
 
 // MANEJA LAS ANIMACIONES DE LA ESCENA
 
-function animateScene(){
+function animateScene() {
 
     // animaciones de los dialogos
-    $(".scene__respuesta").css("display","none")
-                .fadeIn(animSec);
-    $(".dialogo").css("display","none")
-                .fadeIn(animSec);
+    $(".scene__respuesta").css("display", "none")
+        .fadeIn(animSec);
+    $(".dialogo").css("display", "none")
+        .fadeIn(animSec);
 
     // animaciones de la imagen
-    $(".scene__personaje__img").css("display","none")
-                            .fadeIn(animSec);
+    $(".scene__personaje__img").css("display", "none")
+        .fadeIn(animSec);
     $(".scene__personaje").css("background-image", imgOutput());
     $("#imgPersonaje").fadeIn(animSec);
 }
@@ -238,7 +238,7 @@ function buttonPress(buttonSelect) {
                 $("#answerShow").html(web[instance - 1].botonA.answer);
                 $("#questionShow").html(web[instance].question);
                 // llamo a la funcion del objeto con su sumador propio y modifico el status
-                web[instance -1].botonA.dialogStateChange();
+                web[instance - 1].botonA.dialogStateChange();
                 // muestro state en pantalla
                 $("#statisticsShow").html(state);
                 break;
@@ -252,7 +252,7 @@ function buttonPress(buttonSelect) {
                 $("#dialog4Show").html(web[instance].botonD.dialog);
                 $("#answerShow").html(web[instance - 1].botonB.answer);
                 $("#questionShow").html(web[instance].question);
-                web[instance -1].botonB.dialogStateChange();
+                web[instance - 1].botonB.dialogStateChange();
                 $("#statisticsShow").html(state);
                 break;
 
@@ -265,7 +265,7 @@ function buttonPress(buttonSelect) {
                 $("#dialog4Show").html(web[instance].botonD.dialog);
                 $("#answerShow").html(web[instance - 1].botonC.answer);
                 $("#questionShow").html(web[instance].question);
-                web[instance -1].botonC.dialogStateChange();
+                web[instance - 1].botonC.dialogStateChange();
                 $("#statisticsShow").html(state);
                 break
 
@@ -278,7 +278,7 @@ function buttonPress(buttonSelect) {
                 $("#dialog4Show").html(web[instance].botonD.dialog);
                 $("#answerShow").html(web[instance - 1].botonD.answer);
                 $("#questionShow").html(web[instance].question);
-                web[instance -1].botonD.dialogStateChange();
+                web[instance - 1].botonD.dialogStateChange();
                 $("#statisticsShow").html(state);
                 break
 
@@ -311,10 +311,9 @@ function buttonPress(buttonSelect) {
         lastChoice = buttonSelect;
         storeData();
         console.log("instance: " + instance + ", state: " + state + " last choice: " + buttonSelect)
-    
-        resetStorage();
 
-    } else if (instance >10) {
+        resetStorage();
+    } else if (instance > 10) {
 
         $("body").html(`<div class='pantallaFinal'>
                             <h1>Llegaste al final!</h1>
@@ -331,7 +330,12 @@ function buttonPress(buttonSelect) {
                             <p>Pregunta 10 página 152</p>
                             <p class="pantallaFinal__gracias">Gracias por jugar!</p>
                          </div>`);
+    }
 
+    if (state < 1) {
+            $("body").html(`<div class='pantallaFinal'>
+                            <p>Perdiste!</p>
+                         </div>`);
     }
 
 }
@@ -340,7 +344,7 @@ var request = undefined;
 
 // API
 
-$(document).ready(function () {
+$(document).ready(function() {
 
     $.ajax({
         url: 'http://api.openweathermap.org/data/2.5/weather?id=3433955&mode=html&units=metric&appid=6392f1c234cee69be56b94eeec698c27',

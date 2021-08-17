@@ -1,0 +1,42 @@
+img labels:
+
+	start:
+		startBad.png +
+		startGood.png +
+		startVgood.png +
+
+	mid:
+		midBad.png +
+		midGood.png +
+		midVgood.png +
+
+	end:
+		endBad.png +
+		endGood.png +
+		endVgood.png +
+
+
+transitions:
+
+	start:
+		up: startUp.png +
+		down: startDown.png +
+
+	mid:
+		up: midUp.png +
+		down: midDown.png + 
+
+	end:
+		up: endUp.png +
+		down: endDown.png +
+
+
+<p>Pregunta 2 pagina 105</p>
+<p>Pregunta 3 pagina 149</p>
+<p>Pregunta 4 pagina 277</p>
+<p>Pregunta 5 pagina 8</p>
+<p>Pregunta 6 pagina 78</p>
+<p>Pregunta 7 pagina 269</p>
+<p>Pregunta 8 pagina 138</p>
+<p>Pregunta 9 pagina 292</p>
+<p>Pregunta 10 pagina 152</p>

@@ -1,0 +1,37 @@
+NOTAS PARA SEGUNDA ENTREGA
+
+crear funcion de nuevo juego:	+++
+	imprime dialogos iniciales o los dialogos de la instancia guardada +++
+
+agregar boton para reiniciar juego [nuevo juego]: +++
+	falta borrar el name y poner de nuevo el input +++
+
+sistema de guardado:
+	guardar ultimo boton elegido +++
+	imprimir la respuesta al inicio del programa
+
+dividir las instancias en 3: +++
+	beggining
+	middle
+	ending
+
+dividir los estados en 3: +++
+	veryGood
+	good
+	bad
+
+imagen del personaje:
+	Cambiar la imagen dependiendo el rango de state
+	Cambiar la imagen dependiendo el rango de instance
+	Usar animacion de transición si el dialogStateChange fué positivo o negativo
+
+creacion de imágenes:
+	Sacar 3 fotos por cada estado. Total 9 fotos
+	Editar las fotos con GB y color (bordó, naranja y verde)
+	Hacer 2 colores para cada imagen para transicion (rojo, y verde semáforo)
+
+validacion de formulario:
+	Validar para que solo se puedan poner letras
+	Tratar de que la primera letra siempre pase a mayúsculas
+
+

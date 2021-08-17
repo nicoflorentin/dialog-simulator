@@ -21,7 +21,7 @@ let animSec = 1500;
 /////////////////////////////////
 
 // SI EL NOMBRE ESTA VACIO NO SE PUEDE JUGAR
-if (playerName != "") {
+if (playerName != null) {
 
     playable = true;
 }
@@ -69,7 +69,7 @@ function submitName() {
     playerName = nameValue;
 
 
-    if (playerName != "") {
+    if (playerName != null && playerName ) {
 
         // cuando guarda nombre se vuelve jugable
         playable = true;

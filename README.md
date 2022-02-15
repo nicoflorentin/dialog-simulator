@@ -1,6 +1,5 @@
-# Dialog Simulator Gif DEMO
-![demo](dialog-simulator-gif-demo.gif)
+<h1 align="center">Demo</h1>
 
 <p align="center">
-  <img src="./dialog-simulator-gif-demo.gif">
+  <img alt="app-gif-demo" src="./dialog-simulator-gif-demo.gif">
 </p>

@@ -1,2 +1,2 @@
 # Dialog Simulator Gif DEMO
-<>![demo](dialog-simulator-gif-demo.gif)</>
+<div>![demo](dialog-simulator-gif-demo.gif)</div>

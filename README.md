@@ -1,3 +1,3 @@
 # dialog-simulator-gif-demo
 
-![](dialog-simulator-gif-demo.gif)
+![demo](dialog-simulator-gif-demo.gif)

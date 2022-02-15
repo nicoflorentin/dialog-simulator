@@ -1,3 +1,4 @@
-# dialog-simulator-gif-demo
-
+# Dialog Simulator Gif DEMO
+<>
 ![demo](dialog-simulator-gif-demo.gif)
+</>

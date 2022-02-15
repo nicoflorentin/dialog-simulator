@@ -1,3 +1,7 @@
 # dialog-simulator-gif-demo
-
-![demo](dialog-simulator-gif-demo.gif)
+<style>
+  gif{
+  margin : auto
+  }
+</style>
+<mark>![demo](dialog-simulator-gif-demo.gif)</mark>****
